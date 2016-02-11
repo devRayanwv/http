@@ -1,0 +1,20 @@
+{
+    "name": "rayanwv/http",
+    "description": "lightweight http client",
+    "keywords": ["http", "response", "request"],
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Rayan Alamer",
+            "email": "rayan@rayanwv.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Http\\": "src/"
+        }
+    }
+}
