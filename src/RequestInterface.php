@@ -29,5 +29,7 @@ interface RequestInterface
     public function isAjax();
     public function isPjax();
     public function isJson();
+    public function only($keys);
+    public function except($keys);
 
 }

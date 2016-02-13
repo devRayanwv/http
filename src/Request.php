@@ -66,6 +66,38 @@ class Request implements RequestInterface
         return null;
     }
 
+    public function only($keys)
+    {
+        $input = $this->all();
+        $keys = is_array($keys) ? $keys : func_get_args();
+        $results = [];
+
+        foreach ($keys as $key)
+        {
+            if (!array_key_exists($key, $input))
+                continue;
+            $results[$key] = $input[$key];
+        }
+
+        return $results;
+    }
+
+    public function except($keys)
+    {
+        $input = $this->all();
+        $keys = is_array($keys) ? $keys : func_get_args();
+
+        foreach ($keys as $key)
+        {
+            if (!array_key_exists($key, $input))
+                continue;
+            if (array_key_exists($key, $input))
+                unset($input[$key]);
+        }
+
+        return $input;
+    }
+
     public function parameters()
     {
         return array_merge($this->queries, $this->requests);
@@ -159,5 +191,10 @@ class Request implements RequestInterface
             throw new RequestException($key);
 
         return $this->server[$key];
+    }
+
+    private function all()
+    {
+        return array_merge($this->parameters(), $this->files());
     }
 }

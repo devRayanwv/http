@@ -266,11 +266,13 @@ class Response implements ResponseInterface
                 header($key.':'.$value, false, $this->statusCode);
             }
         }
-        header(sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText), true, $this->statusCode);
+        header(sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText), true,
+            $this->statusCode);
 
         foreach($this->cookies as $cookie)
         {
-            setcookie($cookie->getName(), $cookie->getValue(), $cookie->getExpiresTime(), $cookie->getPath(), $cookie->getDomain(), $cookie->isSecure(), $cookie->isHttpOnly());
+            setcookie($cookie->getName(), $cookie->getValue(), $cookie->getExpiresTime(),
+                $cookie->getPath(), $cookie->getDomain(), $cookie->isSecure(), $cookie->isHttpOnly());
 
         }
         return $this;
