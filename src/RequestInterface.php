@@ -33,5 +33,7 @@ interface RequestInterface
     public function except($keys);
     public function isGet();
     public function isPost();
+    public function host();
+    public function getHeader($header);
 
 }

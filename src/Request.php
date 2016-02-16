@@ -208,4 +208,14 @@ class Request implements RequestInterface
         return ($this->method() === "POST");
 
     }
+
+    public function host()
+    {
+        return $this->serverVar('HTTP_HOST');
+    }
+
+    public function getHeader($header)
+    {
+        return $this->serverVar($header);
+    }
 }
