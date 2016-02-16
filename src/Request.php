@@ -197,4 +197,15 @@ class Request implements RequestInterface
     {
         return array_merge($this->parameters(), $this->files());
     }
+
+    public function isGet()
+    {
+        return ($this->method() === "GET");
+    }
+
+    public function isPost()
+    {
+        return ($this->method() === "POST");
+
+    }
 }

@@ -31,5 +31,7 @@ interface RequestInterface
     public function isJson();
     public function only($keys);
     public function except($keys);
+    public function isGet();
+    public function isPost();
 
 }
